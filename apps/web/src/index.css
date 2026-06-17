@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  /* Zemin */
+  --color-slate-950: #0A0C10;
+  --color-slate-900: #0F1117;
+  --color-slate-800: #161820;
+  --color-slate-700: #1E2130;
+  --color-slate-600: #272A3A;
+
+  /* Metin */
+  --color-text-primary:   #ECEAF4;
+  --color-text-secondary: #9896A8;
+  --color-text-muted:     #555368;
+
+  /* Liste renkleri — her tipin kimliği */
+  --color-film:    #E8B04B;   /* Amber — Film */
+  --color-series:  #7C6FE8;   /* Violet — Dizi */
+  --color-book:    #4BA8E8;   /* Sky — Kitap */
+  --color-food:    #E8574B;   /* Coral — Yemek */
+  --color-shop:    #4BE8A8;   /* Mint — Alışveriş */
+
+  /* Sistem renkleri */
+  --color-success: #4BE8A8;
+  --color-error:   #E8574B;
+  --color-warning: #E8B04B;
+  --color-info:    #4BA8E8;
+
+  /* Sınırlar */
+  --color-border:       rgba(255,255,255,0.06);
+  --color-border-hover: rgba(255,255,255,0.12);
+
+  /* Tipografi */
+  --font-display: "Syne", sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  /* Radius / Shadow */
+  --radius-card: 10px;
+  --radius-sm:   6px;
+  --shadow-card: 0 4px 32px rgba(0,0,0,0.5);
+  --shadow-glow-film:   0 0 24px rgba(232,176,75,0.18);
+  --shadow-glow-series: 0 0 24px rgba(124,111,232,0.18);
+  --shadow-glow-book:   0 0 24px rgba(75,168,232,0.18);
+  --shadow-glow-food:   0 0 24px rgba(232,87,75,0.18);
+  --shadow-glow-shop:   0 0 24px rgba(75,232,168,0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-body);
+  background: var(--color-slate-950);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-slate-700) transparent;
+}
+
+/* Animasyonlar */
+@keyframes slide-up   { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:translateY(0) } }
+@keyframes slide-in-r { from { opacity:0; transform:translateX(16px) } to { opacity:1; transform:translateX(0) } }
+@keyframes fade-in    { from { opacity:0 } to { opacity:1 } }
+@keyframes pulse-dot  { 0%,100% { opacity:1 } 50% { opacity:.4 } }
+
+.anim-up   { animation: slide-up   .25s ease-out forwards; }
+.anim-r    { animation: slide-in-r .25s ease-out forwards; }
+.anim-fade { animation: fade-in    .2s  ease-out forwards; }
+.pulse-dot { animation: pulse-dot  1.5s ease-in-out infinite; }
+
+/* Defter spiral üst borderi */
+.notebook-spiral {
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 28px,
+    var(--color-slate-700) 28px,
+    var(--color-slate-700) 30px
+  );
+  height: 6px;
+}

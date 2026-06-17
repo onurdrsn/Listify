@@ -1,0 +1,172 @@
+{
+  "app": { "name": "Listify", "tagline": "Tüm listeleriniz tek yerde." },
+  "nav": {
+    "dashboard": "Genel Bakış",
+    "movies": "Filmler",
+    "series": "Diziler",
+    "books": "Kitaplar",
+    "food": "Yemek",
+    "shopping": "Alışveriş",
+    "reminders": "Hatırlatmalar",
+    "stats": "İstatistikler",
+    "settings": "Ayarlar",
+    "logout": "Çıkış Yap"
+  },
+  "auth": {
+    "login": "Giriş Yap",
+    "register": "Kayıt Ol",
+    "email": "E-posta",
+    "password": "Şifre",
+    "name": "Adınız",
+    "loginTitle": "Tekrar hoş geldiniz",
+    "registerTitle": "Listenizi oluşturun",
+    "noAccount": "Hesabınız yok mu?",
+    "hasAccount": "Hesabınız var mı?",
+    "invalidEmail": "Geçersiz e-posta",
+    "passwordMin": "En az 8 karakter",
+    "wrongCredentials": "E-posta veya şifre hatalı",
+    "emailTaken": "Bu e-posta zaten kayıtlı"
+  },
+  "landing": {
+    "hero": "Tüm listeleriniz,\nbir arada.",
+    "heroSub": "Film, dizi, kitap, yemek, alışveriş — hepsini takip edin. Esprili hatırlatmalarla unutturmayız.",
+    "cta": "Ücretsiz Başla",
+    "ctaLogin": "Giriş Yap",
+    "feature1Title": "5 Liste Tipi",
+    "feature1Desc": "Film, dizi, kitap, yemek ve alışveriş listesi tek platformda.",
+    "feature2Title": "Esprili Hatırlatmalar",
+    "feature2Desc": "Mail ve site içi bildirimlerle sizi asla sıkmadan hatırlatırız.",
+    "feature3Title": "İki Dil",
+    "feature3Desc": "Türkçe ve İngilizce — istediğiniz dilde kullanın."
+  },
+  "status": {
+    "pending": "Bekliyor",
+    "in_progress": "Devam Ediyor",
+    "completed": "Tamamlandı",
+    "skipped": "Geçildi"
+  },
+  "listType": {
+    "movie": "Film",
+    "series": "Dizi",
+    "book": "Kitap",
+    "food_restaurant": "Restoran",
+    "food_recipe": "Tarif",
+    "shopping": "Alışveriş"
+  },
+  "actions": {
+    "add": "Ekle",
+    "save": "Kaydet",
+    "delete": "Sil",
+    "cancel": "İptal",
+    "markDone": "Tamamlandı",
+    "markWatched": "İzledim",
+    "markRead": "Okudum",
+    "markVisited": "Gittim",
+    "markCooked": "Pişirdim",
+    "search": "Ara",
+    "filter": "Filtrele",
+    "edit": "Düzenle",
+    "close": "Kapat"
+  },
+  "empty": {
+    "movie": "Henüz film eklemediniz. İzlemek istediğiniz filmleri ekleyin!",
+    "series": "Dizi listeniz boş. Başlamak istediğiniz bir dizi var mı?",
+    "book": "Kitap listeniz boş. Okunmayı bekleyen kitaplar ekleyin.",
+    "food_restaurant": "Restoran listeniz boş. Denemek istediğiniz yerleri ekleyin!",
+    "food_recipe": "Tarif listeniz boş. Pişirmek istediğiniz tarifleri ekleyin.",
+    "shopping": "Alışveriş listeniz boş. Alınacakları ekleyin."
+  },
+  "reminder": {
+    "title": "Hatırlatmalar",
+    "create": "Hatırlatma Ekle",
+    "type": {
+      "manual": "Belirli Tarih/Saat",
+      "weekly_digest": "Haftalık Özet",
+      "smart_idle": "Akıllı (X Gündür Bekliyor)"
+    },
+    "channel": {
+      "in_app": "Sadece Uygulama İçi",
+      "email": "Sadece E-posta",
+      "both": "Her İkisi"
+    },
+    "scheduledAt": "Tarih ve Saat",
+    "recurring": "Tekrarlansın",
+    "intervalDays": "Her kaç günde bir?",
+    "noReminders": "Henüz hatırlatma eklemediniz.",
+    "active": "Aktif",
+    "inactive": "Pasif"
+  },
+  "notification": {
+    "title": "Bildirimler",
+    "markAllRead": "Tümünü Okundu İşaretle",
+    "noNotifications": "Yeni bildirim yok.",
+    "unread": "{{count}} okunmamış"
+  },
+  "shopping": {
+    "addItem": "Ürün Ekle",
+    "category": {
+      "produce": "Meyve & Sebze",
+      "meat_fish": "Et & Balık",
+      "dairy": "Süt Ürünleri",
+      "bakery": "Fırın",
+      "frozen": "Dondurulmuş",
+      "beverages": "İçecekler",
+      "cleaning": "Temizlik",
+      "personal_care": "Kişisel Bakım",
+      "electronics": "Elektronik",
+      "clothing": "Giyim",
+      "other": "Diğer"
+    },
+    "quantity": "Miktar",
+    "unit": "Birim",
+    "price": "Fiyat (TL)",
+    "barcode": "Barkod Ara",
+    "clearChecked": "Alındıları Temizle",
+    "newList": "Yeni Liste"
+  },
+  "food": {
+    "restaurant": "Restoran",
+    "recipe": "Tarif",
+    "cuisine": "Mutfak",
+    "location": "Konum",
+    "priceRange": "Fiyat Aralığı",
+    "mapsUrl": "Harita Linki",
+    "recipeUrl": "Tarif Linki",
+    "cookTime": "Pişirme Süresi (dk)",
+    "difficulty": { "1": "Kolay", "2": "Orta", "3": "Zor" }
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "profile": "Profil",
+    "notifications": "Bildirimler",
+    "language": "Dil",
+    "weeklyDigest": "Haftalık Özet E-postası",
+    "smartIdleDays": "Akıllı Hatırlatma (gün)",
+    "smartIdleDesc": "0 = kapalı. Bir öğe bu kadar gün bekledikten sonra hatırlatılır.",
+    "notifChannel": "Bildirim Kanalı",
+    "deleteAccount": "Hesabı Sil",
+    "deleteAccountDesc": "Hesabınız 30 gün sonra kalıcı olarak silinir. Bu süre içinde geri alabilirsiniz.",
+    "saved": "Kaydedildi!"
+  },
+  "stats": {
+    "title": "İstatistikler",
+    "totalItems": "Toplam Öğe",
+    "completed": "Tamamlanan",
+    "averageRating": "Ortalama Puan",
+    "byMonth": "Aylık Tamamlanan",
+    "byType": "Tipe Göre"
+  },
+  "errors": {
+    "generic": "Bir şeyler ters gitti. Tekrar deneyin.",
+    "notFound": "Bulunamadı.",
+    "unauthorized": "Bu işlem için giriş yapmanız gerekiyor."
+  },
+  "toast": {
+    "added": "Eklendi!",
+    "updated": "Güncellendi!",
+    "deleted": "Silindi!",
+    "completed": "Tamamlandı!",
+    "reminderSet": "Hatırlatma kuruldu!",
+    "settingsSaved": "Ayarlar kaydedildi!"
+  }
+}

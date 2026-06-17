@@ -1,0 +1,30 @@
+name = "listify-api"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ENVIRONMENT = "production"
+APP_URL = "https://listify.pages.dev"
+
+[[kv_namespaces]]
+binding = "LISTIFY_RATE_LIMIT_KV"
+id = "9c5b1215a660476daf8982086eb22d6d"
+
+[[kv_namespaces]]
+binding = "LISTIFY_SESSION_KV"
+id = "74a7460318b64ab4a21caeceeacfe58e"
+
+[[durable_objects.bindings]]
+name = "REMINDER_SCHEDULER"
+class_name = "ReminderScheduler"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["ReminderScheduler"]
+
+[triggers]
+crons = [
+  "0 3 * * *",   # KVKK hard-delete purge (03:00 UTC)
+  "0 6 * * 1"    # Haftalık özet trigger (Pazartesi 06:00 UTC = Türkiye 09:00)
+]

@@ -1,0 +1,172 @@
+{
+  "app": { "name": "Listify", "tagline": "All your lists in one place." },
+  "nav": {
+    "dashboard": "Overview",
+    "movies": "Movies",
+    "series": "Series",
+    "books": "Books",
+    "food": "Food",
+    "shopping": "Shopping",
+    "reminders": "Reminders",
+    "stats": "Stats",
+    "settings": "Settings",
+    "logout": "Log Out"
+  },
+  "auth": {
+    "login": "Log In",
+    "register": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "name": "Your Name",
+    "loginTitle": "Welcome back",
+    "registerTitle": "Create your list",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "invalidEmail": "Invalid email",
+    "passwordMin": "At least 8 characters",
+    "wrongCredentials": "Invalid email or password",
+    "emailTaken": "Email already in use"
+  },
+  "landing": {
+    "hero": "All your lists,\nin one place.",
+    "heroSub": "Movies, series, books, food, shopping — track them all. We'll remind you with a smile.",
+    "cta": "Get Started Free",
+    "ctaLogin": "Log In",
+    "feature1Title": "5 List Types",
+    "feature1Desc": "Movies, series, books, food, and shopping — all in one platform.",
+    "feature2Title": "Witty Reminders",
+    "feature2Desc": "Email and in-app notifications that actually make you smile.",
+    "feature3Title": "Two Languages",
+    "feature3Desc": "Turkish and English — use it however you like."
+  },
+  "status": {
+    "pending": "Pending",
+    "in_progress": "In Progress",
+    "completed": "Completed",
+    "skipped": "Skipped"
+  },
+  "listType": {
+    "movie": "Movie",
+    "series": "Series",
+    "book": "Book",
+    "food_restaurant": "Restaurant",
+    "food_recipe": "Recipe",
+    "shopping": "Shopping"
+  },
+  "actions": {
+    "add": "Add",
+    "save": "Save",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "markDone": "Done",
+    "markWatched": "Watched",
+    "markRead": "Read",
+    "markVisited": "Visited",
+    "markCooked": "Cooked",
+    "search": "Search",
+    "filter": "Filter",
+    "edit": "Edit",
+    "close": "Close"
+  },
+  "empty": {
+    "movie": "No movies yet. Add movies you want to watch!",
+    "series": "Your series list is empty. Any shows you want to start?",
+    "book": "No books yet. Add books you want to read.",
+    "food_restaurant": "No restaurants yet. Add places you want to try!",
+    "food_recipe": "No recipes yet. Add recipes you want to cook.",
+    "shopping": "Shopping list is empty. Add items to get started."
+  },
+  "reminder": {
+    "title": "Reminders",
+    "create": "Add Reminder",
+    "type": {
+      "manual": "Specific Date/Time",
+      "weekly_digest": "Weekly Digest",
+      "smart_idle": "Smart (Idle for X days)"
+    },
+    "channel": {
+      "in_app": "In-App Only",
+      "email": "Email Only",
+      "both": "Both"
+    },
+    "scheduledAt": "Date and Time",
+    "recurring": "Recurring",
+    "intervalDays": "Every how many days?",
+    "noReminders": "No reminders yet.",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "notification": {
+    "title": "Notifications",
+    "markAllRead": "Mark All as Read",
+    "noNotifications": "No new notifications.",
+    "unread": "{{count}} unread"
+  },
+  "shopping": {
+    "addItem": "Add Item",
+    "category": {
+      "produce": "Produce",
+      "meat_fish": "Meat & Fish",
+      "dairy": "Dairy",
+      "bakery": "Bakery",
+      "frozen": "Frozen",
+      "beverages": "Beverages",
+      "cleaning": "Cleaning",
+      "personal_care": "Personal Care",
+      "electronics": "Electronics",
+      "clothing": "Clothing",
+      "other": "Other"
+    },
+    "quantity": "Quantity",
+    "unit": "Unit",
+    "price": "Price",
+    "barcode": "Barcode Search",
+    "clearChecked": "Clear Checked",
+    "newList": "New List"
+  },
+  "food": {
+    "restaurant": "Restaurant",
+    "recipe": "Recipe",
+    "cuisine": "Cuisine",
+    "location": "Location",
+    "priceRange": "Price Range",
+    "mapsUrl": "Maps Link",
+    "recipeUrl": "Recipe Link",
+    "cookTime": "Cook Time (min)",
+    "difficulty": { "1": "Easy", "2": "Medium", "3": "Hard" }
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "notifications": "Notifications",
+    "language": "Language",
+    "weeklyDigest": "Weekly Digest Email",
+    "smartIdleDays": "Smart Reminder (days)",
+    "smartIdleDesc": "0 = off. Reminded after an item has been pending this many days.",
+    "notifChannel": "Notification Channel",
+    "deleteAccount": "Delete Account",
+    "deleteAccountDesc": "Your account will be permanently deleted after 30 days. You can cancel during this period.",
+    "saved": "Saved!"
+  },
+  "stats": {
+    "title": "Stats",
+    "totalItems": "Total Items",
+    "completed": "Completed",
+    "averageRating": "Average Rating",
+    "byMonth": "Completed by Month",
+    "byType": "By Type"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "notFound": "Not found.",
+    "unauthorized": "You need to be logged in to do this."
+  },
+  "toast": {
+    "added": "Added!",
+    "updated": "Updated!",
+    "deleted": "Deleted!",
+    "completed": "Completed!",
+    "reminderSet": "Reminder set!",
+    "settingsSaved": "Settings saved!"
+  }
+}
