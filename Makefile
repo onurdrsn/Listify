@@ -13,11 +13,11 @@ dev:
 
 # Sadece Web arayüzünü geliştirme modunda çalıştırır
 dev-web:
-	npm run dev --filter @listify/web
+	npm run dev -- --filter @listify/web
 
 # Sadece Worker (Backend) geliştirme modunda çalıştırır
 dev-worker:
-	npm run dev --filter @listify/worker
+	npm run dev -- --filter @listify/worker
 
 # Tüm projenin derlenmesi (TypeScript + Vite)
 build:
@@ -25,11 +25,11 @@ build:
 
 # Sadece Web projesinin derlenmesi
 build-web:
-	npm run build --filter @listify/web
+	npm run build -- --filter @listify/web
 
 # Sadece Worker projesinin derlenmesi
 build-worker:
-	npm run build --filter @listify/worker
+	npm run build -- --filter @listify/worker
 
 # Tüm projenin Cloudflare'e deploy edilmesi
 deploy: deploy-worker deploy-web
