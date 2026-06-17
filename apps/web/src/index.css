@@ -1,33 +1,33 @@
 @import "tailwindcss";
 @theme {
-  /* Zemin */
-  --color-slate-950: #0A0C10;
-  --color-slate-900: #0F1117;
-  --color-slate-800: #161820;
-  --color-slate-700: #1E2130;
-  --color-slate-600: #272A3A;
+  /* Zemin - Çok daha koyu premium siyah/gri tonları */
+  --color-slate-950: #050608;
+  --color-slate-900: #0A0C10;
+  --color-slate-800: #12141C;
+  --color-slate-700: #1B1E2B;
+  --color-slate-600: #252A3C;
 
   /* Metin */
-  --color-text-primary:   #ECEAF4;
-  --color-text-secondary: #9896A8;
-  --color-text-muted:     #555368;
+  --color-text-primary:   #F3F4F6;
+  --color-text-secondary: #9CA3AF;
+  --color-text-muted:     #6B7280;
 
-  /* Liste renkleri — her tipin kimliği */
-  --color-film:    #E8B04B;   /* Amber — Film */
-  --color-series:  #7C6FE8;   /* Violet — Dizi */
-  --color-book:    #4BA8E8;   /* Sky — Kitap */
-  --color-food:    #E8574B;   /* Coral — Yemek */
-  --color-shop:    #4BE8A8;   /* Mint — Alışveriş */
+  /* Liste renkleri — Neon premium renkler */
+  --color-film:    #38BDF8;   /* Cyan — Film (Görseldeki mavi) */
+  --color-series:  #2DD4BF;   /* Teal — Dizi (Görseldeki yeşil/mavi) */
+  --color-book:    #FB923C;   /* Orange — Kitap (Görseldeki turuncu) */
+  --color-food:    #C084FC;   /* Purple — Yemek (Görseldeki mor) */
+  --color-shop:    #4ADE80;   /* Green — Alışveriş (Görseldeki yeşil) */
 
   /* Sistem renkleri */
-  --color-success: #4BE8A8;
-  --color-error:   #E8574B;
-  --color-warning: #E8B04B;
-  --color-info:    #4BA8E8;
+  --color-success: #4ADE80;
+  --color-error:   #F87171;
+  --color-warning: #FBBF24;
+  --color-info:    #38BDF8;
 
   /* Sınırlar */
-  --color-border:       rgba(255,255,255,0.06);
-  --color-border-hover: rgba(255,255,255,0.12);
+  --color-border:       rgba(255,255,255,0.03);
+  --color-border-hover: rgba(255,255,255,0.08);
 
   /* Tipografi */
   --font-display: "Syne", sans-serif;
@@ -35,14 +35,14 @@
   --font-mono:    "JetBrains Mono", monospace;
 
   /* Radius / Shadow */
-  --radius-card: 10px;
-  --radius-sm:   6px;
-  --shadow-card: 0 4px 32px rgba(0,0,0,0.5);
-  --shadow-glow-film:   0 0 24px rgba(232,176,75,0.18);
-  --shadow-glow-series: 0 0 24px rgba(124,111,232,0.18);
-  --shadow-glow-book:   0 0 24px rgba(75,168,232,0.18);
-  --shadow-glow-food:   0 0 24px rgba(232,87,75,0.18);
-  --shadow-glow-shop:   0 0 24px rgba(75,232,168,0.18);
+  --radius-card: 16px;
+  --radius-sm:   8px;
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.6);
+  --shadow-glow-film:   0 0 24px rgba(56,189,248,0.25);
+  --shadow-glow-series: 0 0 24px rgba(45,212,191,0.25);
+  --shadow-glow-book:   0 0 24px rgba(251,146,60,0.25);
+  --shadow-glow-food:   0 0 24px rgba(192,132,252,0.25);
+  --shadow-glow-shop:   0 0 24px rgba(74,222,128,0.25);
 }
 
 html {
