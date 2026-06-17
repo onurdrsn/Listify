@@ -133,8 +133,15 @@ export const itemsRouter = t.router({
     }),
 
   tmdbSearch: protectedProcedure
-    .input(z.object({ query: z.string().min(1), type: z.enum(["movie","series"]) }))
-    .query(async ({ input, ctx }) => searchTMDB(input.query, input.type, ctx.env.TMDB_API_KEY)),
+    .input(z.object({ query: z.string().min(1) }))
+    .query(async ({ input, ctx }) => searchTMDB(input.query, ctx.env.TMDB_API_KEY)),
+
+  tmdbDetails: protectedProcedure
+    .input(z.object({ id: z.number(), type: z.enum(["movie","series"]) }))
+    .query(async ({ input, ctx }) => {
+      const { getTMDBDetails } = await import("../services/tmdb");
+      return getTMDBDetails(input.id, input.type, ctx.env.TMDB_API_KEY);
+    }),
 
   openLibrarySearch: protectedProcedure
     .input(z.object({ query: z.string().min(1) }))

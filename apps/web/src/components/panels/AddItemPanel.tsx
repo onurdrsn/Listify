@@ -8,6 +8,7 @@ import { Select } from "../ui/Select";
 import { TMDBSearch } from "../search/TMDBSearch";
 import { OpenLibrarySearch } from "../search/OpenLibrarySearch";
 import { useToastStore } from "../ui/Toast";
+import { ConfirmDialog } from "../ui/ConfirmDialog";
 
 interface AddItemPanelProps {
   open: boolean;
@@ -19,7 +20,11 @@ interface AddItemPanelProps {
 export function AddItemPanel({ open, onClose, type, onSuccess }: AddItemPanelProps) {
   const { t } = useTranslation();
   const { add: toast } = useToastStore();
+  const trpcUtils = trpc.useUtils();
 
+  const [overrideType, setOverrideType] = useState<any>(null);
+  const [pendingSelection, setPendingSelection] = useState<any>(null);
+  const [confirmConfig, setConfirmConfig] = useState<{ open: boolean; message: string; targetType: any }>({ open: false, message: "", targetType: null });
   const [title, setTitle] = useState("");
   const [notes, setNotes] = useState("");
   const [coverUrl, setCoverUrl] = useState("");
@@ -73,14 +78,57 @@ export function AddItemPanel({ open, onClose, type, onSuccess }: AddItemPanelPro
     setCookTimeMin(undefined);
     setDifficulty(1);
     setSearchMode(true);
+    setOverrideType(null);
   };
 
-  const handleSelectTMDB = (data: any) => {
+  const handleSelectTMDB = async (data: any) => {
+    if (type === "movie" && data.mediaType === "series") {
+      setPendingSelection(data);
+      setConfirmConfig({ open: true, message: "Filmler sayfasındasınız ancak seçtiğiniz bir dizi. Bunu Diziler listesine eklemek ister misiniz?", targetType: "series" });
+      return;
+    } else if (type === "series" && data.mediaType === "movie") {
+      setPendingSelection(data);
+      setConfirmConfig({ open: true, message: "Diziler sayfasındasınız ancak seçtiğiniz bir film. Bunu Filmler listesine eklemek ister misiniz?", targetType: "movie" });
+      return;
+    }
+
+    await processTMDBSelection(data, type);
+  };
+
+  const processTMDBSelection = async (data: any, targetType: string) => {
+    if (targetType !== type) {
+      setOverrideType(targetType);
+    } else {
+      setOverrideType(null);
+    }
+
     setTitle(data.title);
     setCoverUrl(data.posterUrl || "");
     setYear(parseInt(data.year) || undefined);
     setGenre(data.genre);
     setSearchMode(false);
+
+    if (data.mediaType === "series" || targetType === "series") {
+      try {
+        const details = await trpcUtils.items.tmdbDetails.fetch({ id: data.id, type: "series" });
+        if (details.seasonCount) setSeasonCount(details.seasonCount);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  };
+
+  const handleConfirmSelect = () => {
+    if (pendingSelection) {
+      processTMDBSelection(pendingSelection, confirmConfig.targetType);
+    }
+    setConfirmConfig({ open: false, message: "", targetType: null });
+    setPendingSelection(null);
+  };
+
+  const handleCancelSelect = () => {
+    setConfirmConfig({ open: false, message: "", targetType: null });
+    setPendingSelection(null);
   };
 
   const handleSelectOpenLibrary = (data: any) => {
@@ -98,8 +146,9 @@ export function AddItemPanel({ open, onClose, type, onSuccess }: AddItemPanelPro
       toast("error", "Başlık zorunludur");
       return;
     }
+    const finalType = overrideType || type;
     addMutation.mutate({
-      type,
+      type: finalType,
       title,
       notes: notes || undefined,
       coverUrl: coverUrl || undefined,
@@ -113,11 +162,11 @@ export function AddItemPanel({ open, onClose, type, onSuccess }: AddItemPanelPro
       restaurantName: restaurantName || undefined,
       cuisine: cuisine || undefined,
       location: location || undefined,
-      priceRange: type === "food_restaurant" ? priceRange : undefined,
+      priceRange: finalType === "food_restaurant" ? priceRange : undefined,
       mapsUrl: mapsUrl || undefined,
       recipeUrl: recipeUrl || undefined,
       cookTimeMin,
-      difficulty: type === "food_recipe" ? difficulty : undefined,
+      difficulty: finalType === "food_recipe" ? difficulty : undefined,
     });
   };
 
@@ -130,7 +179,7 @@ export function AddItemPanel({ open, onClose, type, onSuccess }: AddItemPanelPro
               <label className="text-xs text-text-secondary">Arama Yap veya Manuel Ekle</label>
               <Button size="sm" variant="ghost" onClick={() => setSearchMode(false)} className="cursor-pointer">Manuel Form</Button>
             </div>
-            <TMDBSearch type={type === "movie" ? "movie" : "series"} onSelect={handleSelectTMDB} />
+            <TMDBSearch onSelect={handleSelectTMDB} />
           </div>
         )}
 
@@ -249,6 +298,13 @@ export function AddItemPanel({ open, onClose, type, onSuccess }: AddItemPanelPro
           </div>
         )}
       </div>
+
+      <ConfirmDialog
+        open={confirmConfig.open}
+        message={confirmConfig.message}
+        onConfirm={handleConfirmSelect}
+        onCancel={handleCancelSelect}
+      />
     </Modal>
   );
 }

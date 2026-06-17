@@ -73,9 +73,9 @@ export function Modal({ open, onClose, title, children, size = "md" }: ModalProp
     <dialog
       ref={ref}
       className={cn(
-        "bg-slate-900 border border-border text-text-primary rounded-card p-6 shadow-card focus:outline-none mx-auto my-auto",
-        "backdrop:bg-slate-950/85 backdrop:backdrop-blur-xs",
-        "anim-up",
+        "bg-slate-900/80 backdrop-blur-xl border border-white/10 text-white rounded-2xl p-6 shadow-2xl focus:outline-none mx-auto my-auto",
+        "backdrop:bg-slate-950/80 backdrop:backdrop-blur-sm",
+        "anim-up transition-all",
         size === "sm" && "max-w-sm w-full",
         size === "md" && "max-w-md w-full",
         size === "lg" && "max-w-lg w-full"

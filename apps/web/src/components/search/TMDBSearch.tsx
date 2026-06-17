@@ -6,17 +6,16 @@ import { Input } from "../ui/Input";
 import { Skeleton } from "../ui/Skeleton";
 
 interface TMDBSearchProps {
-  type: "movie" | "series";
   onSelect: (data: any) => void;
 }
 
-export function TMDBSearch({ type, onSelect }: TMDBSearchProps) {
+export function TMDBSearch({ onSelect }: TMDBSearchProps) {
   const { t } = useTranslation();
   const [query, setQuery] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
   const { data: results, isLoading } = trpc.items.tmdbSearch.useQuery(
-    { query: searchQuery, type },
+    { query: searchQuery },
     { enabled: searchQuery.length > 0 }
   );
 
@@ -63,7 +62,7 @@ export function TMDBSearch({ type, onSelect }: TMDBSearchProps) {
               />
             ) : (
               <div className="w-10 h-14 bg-slate-800 flex items-center justify-center text-xs text-text-muted">
-                🎬
+                {item.mediaType === "movie" ? "🎬" : "📺"}
               </div>
             )}
             <div className="min-w-0 flex-1">
