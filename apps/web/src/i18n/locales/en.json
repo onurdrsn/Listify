@@ -28,16 +28,16 @@
     "emailTaken": "Email already in use"
   },
   "landing": {
-    "hero": "All your lists,\nin one place.",
-    "heroSub": "Movies, series, books, food, shopping — track them all. We'll remind you with a smile.",
-    "cta": "Get Started Free",
+    "hero": "All your lists,\nin one platform.",
+    "heroSub": "Movies, series, books, favorite restaurants, and shopping lists. The smartest, premium way to organize your life. We've got your back with smart reminders.",
+    "cta": "Start Now",
     "ctaLogin": "Log In",
-    "feature1Title": "5 List Types",
-    "feature1Desc": "Movies, series, books, food, and shopping — all in one platform.",
-    "feature2Title": "Witty Reminders",
-    "feature2Desc": "Email and in-app notifications that actually make you smile.",
-    "feature3Title": "Two Languages",
-    "feature3Desc": "Turkish and English — use it however you like."
+    "feature1Title": "Everything in One Place",
+    "feature1Desc": "Movies, series, books, food, and shopping lists — all in a sleek, modern platform.",
+    "feature2Title": "Smart Reminders",
+    "feature2Desc": "Email and in-app notifications that gently remind you of your tasks without being annoying.",
+    "feature3Title": "Dual Language Support",
+    "feature3Desc": "Turkish and English — use the interface fluently in the language you prefer."
   },
   "status": {
     "pending": "Pending",

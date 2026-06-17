@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@source "./src";
 @theme {
   /* Zemin */
   --color-slate-950: #0A0C10;

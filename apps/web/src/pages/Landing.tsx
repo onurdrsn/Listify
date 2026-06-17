@@ -1,8 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAuthStore } from "../store/authStore";
 import { Button } from "../components/ui/Button";
+import { AuthModal } from "../components/AuthModal";
 
 const FEATURES = [
   { key: "feature1", icon: "📚", hoverClass: "hover:border-book/40 hover:shadow-glow-book" },
@@ -22,7 +23,16 @@ export function Landing() {
   const { t } = useTranslation();
   const token = useAuthStore(s => s.token);
   const navigate = useNavigate();
+  
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<"login" | "register">("login");
+
   useEffect(() => { if (token) navigate("/dashboard"); }, [token]);
+
+  const openAuth = (mode: "login" | "register") => {
+    setAuthMode(mode);
+    setIsAuthOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col relative overflow-hidden">
@@ -40,8 +50,8 @@ export function Landing() {
           Listify
         </span>
         <div className="flex items-center gap-4">
-          <Link to="/giris"><Button variant="ghost" size="sm">{t("auth.login")}</Button></Link>
-          <Link to="/kayit"><Button size="sm" style={{ background: "var(--color-film)", color: "#0A0C10" }} className="font-semibold hover:opacity-90">{t("landing.cta")}</Button></Link>
+          <Button variant="ghost" size="sm" onClick={() => openAuth("login")}>{t("auth.login")}</Button>
+          <Button size="sm" onClick={() => openAuth("register")} style={{ background: "var(--color-film)", color: "#0A0C10" }} className="font-semibold hover:opacity-90 shadow-md hover:shadow-glow-film">{t("landing.cta")}</Button>
         </div>
       </nav>
 
@@ -60,14 +70,16 @@ export function Landing() {
           ))}
         </div>
 
-        <h1 className="text-5xl md:text-6xl font-extrabold text-text-primary mb-6 leading-tight whitespace-pre-line tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+        <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-400 mb-6 leading-tight tracking-tight drop-shadow-sm" style={{ fontFamily: "var(--font-display)" }}>
           {t("landing.hero")}
         </h1>
-        <p className="text-lg text-text-secondary mb-10 max-w-xl leading-relaxed">{t("landing.heroSub")}</p>
+        <p className="text-lg md:text-xl text-text-secondary mb-12 max-w-2xl leading-relaxed">
+          {t("landing.heroSub")}
+        </p>
 
-        <div className="flex items-center gap-4 mb-20">
-          <Link to="/kayit"><Button size="lg" style={{ background: "var(--color-film)", color: "#0A0C10" }} className="font-bold hover:scale-105 transition-transform duration-200">{t("landing.cta")}</Button></Link>
-          <Link to="/giris"><Button variant="outline" size="lg" className="hover:scale-105 transition-transform duration-200">{t("landing.ctaLogin")}</Button></Link>
+        <div className="flex flex-col sm:flex-row items-center gap-4 mb-24">
+          <Button size="lg" onClick={() => openAuth("register")} style={{ background: "var(--color-film)", color: "#0A0C10" }} className="w-full sm:w-auto font-bold text-base hover:scale-105 hover:shadow-glow-film transition-all duration-300">{t("landing.cta")}</Button>
+          <Button variant="outline" size="lg" onClick={() => openAuth("login")} className="w-full sm:w-auto hover:scale-105 transition-all duration-300">{t("landing.ctaLogin")}</Button>
         </div>
 
         {/* Özellikler */}
@@ -85,6 +97,12 @@ export function Landing() {
           ))}
         </div>
       </main>
+
+      <AuthModal 
+        isOpen={isAuthOpen} 
+        onClose={() => setIsAuthOpen(false)} 
+        defaultMode={authMode} 
+      />
     </div>
   );
 }

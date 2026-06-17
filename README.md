@@ -1,140 +1,71 @@
 # Listify — Kişisel Takip & Hatırlatma Platformu
 
-Listify; film, dizi, kitap, yemek ve alışveriş listelerinizi tek bir çatı altında tutmanızı sağlayan ve sizi esprili/iğneleyici bildirimlerle sürekli tetikte tutan modern bir kişisel takip platformudur.
+Listify, tüm takip etmek istediğiniz içerikleri (filmler, diziler, kitaplar, yemek tarifleri/restoranlar ve alışveriş) tek bir yerde yönetmenizi sağlayan modern ve premium bir web uygulamasıdır.
 
-Bu proje, yüksek performanslı ve sunucusuz (serverless) Cloudflare ekosisteminde çalışmak üzere tasarlanmış **monorepo** yapısına sahiptir.
+## 🌟 Özellikler
 
----
+- **5 Farklı Liste Tipi:** Film, Dizi, Kitap, Yemek ve Alışveriş.
+- **Akıllı Hatırlatmalar:** Size esprili ve motive edici hatırlatmalar (in-app ve e-posta).
+- **Haftalık Özetler:** Her Pazartesi tamamlanan ve bekleyen listenizin özeti.
+- **Dış API Entegrasyonları:** TMDB (Film/Dizi), OpenLibrary (Kitap) aramaları otomatik kapak ve meta veri çekme.
 
-## 🚀 Proje Yapısı (Monorepo)
+## 🚀 Teknolojiler
 
-Proje, hızlı ve izole edilmiş geliştirme süreçleri için `turbo` ve npm workspaces kullanır:
+- **Frontend:** React 19, Tailwind CSS v4, Zustand, Vite, TanStack Query
+- **Backend:** Cloudflare Workers, Hono, tRPC
+- **Veritabanı:** Neon (Serverless Postgres), Drizzle ORM
+- **Diğer:** Resend (E-posta), Cloudflare Durable Objects (Zamanlanmış Hatırlatmalar)
 
-*   **`packages/shared`**: Backend ve Frontend arasında ortak kullanılan veri tipleri ve Zod doğrulama (validation) şemaları.
-*   **`apps/worker`**: Cloudflare Workers üzerinde çalışan Hono tabanlı API backend'i. tRPC sunucusu, Neon PostgreSQL (Drizzle ORM) entegrasyonu, Durable Objects tabanlı hatırlatıcı zamanlayıcısı ve Resend e-posta servisi bu katmandadır.
-*   **`apps/web`**: React 19, Vite, Tailwind CSS v4 ve tRPC istemcisi kullanılarak geliştirilmiş, çoklu dil destekli (TR/EN) ve son derece akıcı arayüze sahip web uygulaması.
+## 🛠️ Kurulum ve Çalıştırma
 
----
+Projenin kurulumunu gerçekleştirmek için aşağıdaki komutları kullanabilirsiniz:
 
-## 🛠️ Kullanılan Teknolojiler
-
-### Backend (`apps/worker`)
-*   **Çalışma Ortamı:** Cloudflare Workers & Durable Objects
-*   **Web Framework:** [Hono](https://hono.dev/)
-*   **API Katmanı:** [tRPC](https://trpc.io/) (Tip güvenli istemci-sunucu iletişimi)
-*   **Veritabanı & ORM:** Neon Serverless PostgreSQL & [Drizzle ORM](https://orm.drizzle.team/)
-*   **E-posta Servisi:** [Resend](https://resend.com/)
-*   **Güvenlik:** Web Crypto API (PBKDF2 şifreleme ve JWT yetkilendirme)
-
-### Frontend (`apps/web`)
-*   **Çatı:** React 19 & Vite
-*   **Stil:** Tailwind CSS v4 (Özel renk paletleri, pürüzsüz geçişler ve esnek yerleşimler)
-*   **Durum Yönetimi:** Zustand (Auth, UI ve Bildirim yönetimi)
-*   **Yerelleştirme:** i18next (Tam Türkçe ve İngilizce dil desteği)
-*   **Servis Entegrasyonları:**
-    *   **TMDB API:** Popüler film ve dizileri arama ve ekleme.
-    *   **OpenLibrary API:** Kitapları başlık veya yazara göre arama.
-    *   **Barkod Arama:** Alışveriş listelerinde hızlı ürün ekleme.
-
----
-
-## ✨ Temel Özellikler
-
-1.  **5 Farklı Takip Listesi:**
-    *   🎬 **Filmler:** İzleme durumu, kişisel puanlama ve TMDB entegrasyonu.
-    *   📺 **Diziler:** Sezon/bölüm takibi ve TMDB entegrasyonu.
-    *   📚 **Kitaplar:** Okunan sayfa takibi ve OpenLibrary entegrasyonu.
-    *   🍔 **Yemekler:** Mutfak türleri, restoran ve sipariş/pişirme tercihleri.
-    *   🛒 **Alışveriş:** Adet, birim, barkod (EAN/UPC) ve sepet durumu takibi.
-2.  **Esprili & İğneleyici Hatırlatıcılar (Witty Reminders):**
-    *   Eğer bir kitabı uzun süre okumadıysanız ya da izlemek istediğiniz filmi ertelediyseniz, sistem size esprili ve tatlı-sert iğneleyici bildirimler atar.
-    *   **Haftalık Özet E-postası (Weekly Digest):** Tamamlanmamış görevlerinizi hatırlatan e-postalar.
-    *   **Zamanlanmış Hatırlatıcılar:** Durable Objects ile tetiklenen hassas alarmlar.
-3.  **Performans odaklı Arayüz:** Modern Glassmorphism efektleri, şık karanlık tema ve micro-animasyonlar.
-
----
-
-## 📦 Kurulum ve Çalıştırma
-
-Projede komutları basitleştirmek ve hem monorepo genelinde hem de alt paketler (Web / Worker) özelinde kolay yönetim sağlamak adına gelişmiş bir `Makefile` bulunmaktadır.
-
-### 1. Bağımlılıkları Yükleme
-Tüm monorepo genelinde (tüm alt paketlerin bağımlılıkları dahil) kurulum yapar:
+### 1. Bağımlılıkların Yüklenmesi
 ```bash
 make install
+# Veya manuel olarak: npm install
 ```
 
-### 2. Yerel Geliştirme (Development)
-*   **Tüm Sistemi Çalıştır (Web + Worker):**
-    ```bash
-    make dev
-    ```
-*   **Sadece Web Arayüzünü Çalıştır:**
-    ```bash
-    make dev-web
-    ```
-*   **Sadece Worker Backend'ini Çalıştır:**
-    ```bash
-    make dev-worker
-    ```
+### 2. Çevresel Değişkenler (.env)
+Aşağıdaki çevresel değişkenleri `apps/worker/.dev.vars` (geliştirme için) ve `apps/web/.env.local` dosyalarına eklemeniz gerekmektedir:
 
-### 3. Projeyi Derleme (Build & Typecheck)
-*   **Tüm Sistemi Derle:**
-    ```bash
-    make build
-    ```
-*   **Sadece Web (Frontend) Uygulamasını Derle:**
-    ```bash
-    make build-web
-    ```
-*   **Sadece Worker (Backend) Tip Kontrolü Yap:**
-    ```bash
-    make build-worker
-    ```
-*   **Ortak Kütüphane (Shared) Tip Kontrolü Yap:**
-    ```bash
-    make build-shared
-    ```
-
-### 4. Canlı Ortama Dağıtım (Deployment)
-*   **Tüm Sistemi Dağıt (Web + Worker):**
-    ```bash
-    make deploy
-    ```
-*   **Sadece Web Arayüzünü Dağıt (Cloudflare Pages):**
-    ```bash
-    make deploy-web
-    ```
-*   **Sadece Worker Backend'ini Dağıt (Cloudflare Workers):**
-    ```bash
-    make deploy-worker
-    ```
-
-### 5. Temizlik
-Derleme sırasında yanlışlıkla oluşabilecek geçici `.js` uzantılı artık dosyaları temizler:
-```bash
-make clean
-```
-
----
-
-## ⚙️ Yapılandırma ve Ortam Değişkenleri
-
-### Backend (`apps/worker/wrangler.toml`)
-Backend çalışması için aşağıdaki ortam değişkenlerine (vars veya secrets) ihtiyaç duyar:
-
-```toml
-[vars]
-DATABASE_URL = "postgres://username:password@host/database"
-JWT_SECRET = "super-secret-jwt-key"
-RESEND_API_KEY = "re_your_resend_api_key"
-TMDB_API_KEY = "your_tmdb_api_key"
-FRONTEND_URL = "http://localhost:5173" # veya canlı adresiniz
-```
-
-### Frontend (`apps/web/.env`)
-Vite istemcisinin backend API'sine bağlanabilmesi için:
-
+**apps/worker/.dev.vars:**
 ```env
-VITE_API_URL=http://localhost:8787
+DATABASE_URL="postgres://user:password@host/dbname"
+JWT_SECRET="super-secret-key-123"
+COOKIE_SECRET="cookie-secret-key"
+RESEND_API_KEY="re_123456789"
+TMDB_API_KEY="Sizin_TMDB_API_Keyiniz_Buraya" # (v3 API Key kullanılmalıdır!)
+APP_URL="http://localhost:5173"
 ```
+
+**apps/web/.env.local:**
+```env
+VITE_API_URL="http://localhost:8787"
+```
+
+### 3. Geliştirme Modu (Development)
+Tüm projeyi (Frontend ve Backend aynı anda) çalıştırmak için:
+```bash
+make dev
+# Veya: npm run dev
+```
+
+### 4. Build ve Deploy
+Ayrıntılı Makefile komutları mevcuttur:
+
+- Tüm projeyi derlemek: `make build`
+- Sadece web derlemek: `make build-web`
+- Sadece worker derlemek: `make build-worker`
+
+- Tüm projeyi deploy etmek: `make deploy` (Önce worker, sonra web)
+- Sadece web deploy etmek: `make deploy-web`
+- Sadece worker deploy etmek: `make deploy-worker`
+
+## ❓ Sıkça Sorulan Sorular
+
+**TMDB API Anahtarı olarak hangisini kullanmalıyım?**
+TMDB API için **API Key (v3 auth)** kullanmalısınız (örneğin 32 karakterlik uzunluğunda string). API Read Access Token (v4) sistemimiz tarafından doğrudan kullanılmamaktadır. `TMDB_API_KEY` değerine v3 anahtarınızı yazabilirsiniz.
+
+## 📄 Lisans
+Bu proje MIT lisansı ile lisanslanmıştır.

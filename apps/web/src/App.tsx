@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/authStore";
 import { Shell } from "./components/layout/Shell";
 import { Landing } from "./pages/Landing";
-import { Auth } from "./pages/Auth";
 import { Dashboard } from "./pages/Dashboard";
 import { Movies } from "./pages/Movies";
 import { Series } from "./pages/Series";
@@ -36,8 +35,6 @@ export default function App() {
       <Toast />
       <Routes>
         <Route path="/"       element={<Landing />} />
-        <Route path="/giris"  element={<Auth mode="login" />} />
-        <Route path="/kayit"  element={<Auth mode="register" />} />
         <Route element={<ProtectedRoute><Shell /></ProtectedRoute>}>
           <Route path="/dashboard"      element={<Dashboard />} />
           <Route path="/filmler"        element={<Movies />} />

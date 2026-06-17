@@ -1,68 +1,48 @@
-.PHONY: install build deploy dev clean \
-        build-web build-worker build-shared \
-        dev-web dev-worker \
-        deploy-web deploy-worker
+.PHONY: install dev dev-web dev-worker build build-web build-worker deploy deploy-web deploy-worker clean
 
-# ==========================================
-# 1. Genel / Monorepo Komutları
-# ==========================================
+# Varsayılan hedef
+all: install build
 
-# Tüm monorepo için bağımlılıkları yükler (npm workspaces tüm alt paketleri otomatik bağlar)
+# Bağımlılıkların kurulması
 install:
 	npm install
 
-# Tüm projeleri derler
-build:
-	npx turbo run build
-
-# Tüm servisleri canlıya alır
-deploy:
-	npx turbo run deploy
-
-# Yerel geliştirme ortamını başlatır (Frontend ve Backend'i aynı anda çalıştırır)
+# Geliştirme (Tüm projeyi aynı anda çalıştırır)
 dev:
-	npx turbo run dev
+	npm run dev
 
-# Geçici derleme dosyalarını temizler
-clean:
-	find . -name "*.js" -not -path "*/node_modules/*" -not -path "*/.turbo/*" -not -path "*/dist/*" -delete
-
-# ==========================================
-# 2. Web (Frontend) Komutları
-# ==========================================
-
-# Sadece Frontend uygulamasını derler (Vite + TS Kontrolü)
-build-web:
-	npx turbo run build --filter=@listify/web
-
-# Sadece Frontend uygulamasını yerel modda çalıştırır
+# Sadece Web arayüzünü geliştirme modunda çalıştırır
 dev-web:
-	npx turbo run dev --filter=@listify/web
+	npm run dev --filter @listify/web
 
-# Sadece Frontend uygulamasını Cloudflare Pages'e yükler
-deploy-web:
-	npx turbo run deploy --filter=@listify/web
-
-# ==========================================
-# 3. Worker (Backend) Komutları
-# ==========================================
-
-# Worker backend projesinin tip doğruluğunu kontrol eder (Derleme adımı wrangler içinde gömülüdür)
-build-worker:
-	npx tsc --noEmit -p apps/worker/tsconfig.json
-
-# Sadece Worker backend projesini yerel Wrangler dev modunda çalıştırır
+# Sadece Worker (Backend) geliştirme modunda çalıştırır
 dev-worker:
-	npx turbo run dev --filter=@listify/worker
+	npm run dev --filter @listify/worker
 
-# Sadece Worker backend projesini Cloudflare Workers'a yükler
-deploy-worker:
-	npx turbo run deploy --filter=@listify/worker
+# Tüm projenin derlenmesi (TypeScript + Vite)
+build:
+	npm run build
 
-# ==========================================
-# 4. Shared (Ortak Kütüphane) Komutları
-# ==========================================
+# Sadece Web projesinin derlenmesi
+build-web:
+	npm run build --filter @listify/web
 
-# Ortak kütüphanenin tip kontrolünü yapar
-build-shared:
-	npx tsc --noEmit -p packages/shared/tsconfig.json
+# Sadece Worker projesinin derlenmesi
+build-worker:
+	npm run build --filter @listify/worker
+
+# Tüm projenin Cloudflare'e deploy edilmesi
+deploy: deploy-worker deploy-web
+
+# Sadece Web projesinin Cloudflare Pages'e deploy edilmesi
+deploy-web: build-web
+	cd apps/web && npx wrangler pages deploy dist --project-name listify
+
+# Sadece Worker projesinin Cloudflare Workers'a deploy edilmesi
+deploy-worker: build-worker
+	cd apps/worker && npx wrangler deploy
+
+# Derleme dosyalarının temizlenmesi
+clean:
+	find . -name "dist" -type d -prune -exec rm -rf '{}' +
+	find . -name ".turbo" -type d -prune -exec rm -rf '{}' +

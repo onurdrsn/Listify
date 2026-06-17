@@ -1,3 +1,4 @@
+import { t } from "./trpc";
 import { authRouter } from "./auth";
 import { itemsRouter } from "./items";
 import { shoppingRouter } from "./shopping";
@@ -5,7 +6,6 @@ import { remindersRouter } from "./reminders";
 import { notificationsRouter } from "./notifications";
 import { statsRouter } from "./stats";
 import { userRouter } from "./user";
-import { t } from "./trpc";
 
 export const appRouter = t.router({
   auth: authRouter,

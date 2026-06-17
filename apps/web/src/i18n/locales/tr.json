@@ -28,16 +28,16 @@
     "emailTaken": "Bu e-posta zaten kayıtlı"
   },
   "landing": {
-    "hero": "Tüm listeleriniz,\nbir arada.",
-    "heroSub": "Film, dizi, kitap, yemek, alışveriş — hepsini takip edin. Esprili hatırlatmalarla unutturmayız.",
-    "cta": "Ücretsiz Başla",
+    "hero": "Tüm listeleriniz,\ntek bir platformda.",
+    "heroSub": "Filmler, diziler, kitaplar, favori restoranlarınız ve alışveriş listeleriniz. Hayatınızı düzenlemenin en akıllı ve premium yolu. Akıllı hatırlatmalarla arkanızdayız.",
+    "cta": "Hemen Başlayın",
     "ctaLogin": "Giriş Yap",
-    "feature1Title": "5 Liste Tipi",
-    "feature1Desc": "Film, dizi, kitap, yemek ve alışveriş listesi tek platformda.",
-    "feature2Title": "Esprili Hatırlatmalar",
-    "feature2Desc": "Mail ve site içi bildirimlerle sizi asla sıkmadan hatırlatırız.",
-    "feature3Title": "İki Dil",
-    "feature3Desc": "Türkçe ve İngilizce — istediğiniz dilde kullanın."
+    "feature1Title": "Tüm İçerikler Bir Arada",
+    "feature1Desc": "Film, dizi, kitap, yemek ve alışveriş listesi; hepsi tek bir şık ve modern platformda.",
+    "feature2Title": "Akıllı Hatırlatmalar",
+    "feature2Desc": "E-posta ve uygulama içi bildirimlerle sizi asla sıkmadan görevlerinizi hatırlatırız.",
+    "feature3Title": "Çift Dil Desteği",
+    "feature3Desc": "Türkçe ve İngilizce — arayüzü dilediğiniz dilde akıcı bir şekilde kullanın."
   },
   "status": {
     "pending": "Bekliyor",
