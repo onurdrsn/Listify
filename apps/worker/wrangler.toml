@@ -5,7 +5,7 @@ compatibility_flags = ["nodejs_compat"]
 
 [vars]
 ENVIRONMENT = "production"
-APP_URL = "https://listify.pages.dev"
+APP_URL = "https://listify.onurd.com.tr"
 
 [[kv_namespaces]]
 binding = "LISTIFY_RATE_LIMIT_KV"
