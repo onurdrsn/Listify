@@ -32,11 +32,16 @@ const app = new Hono<{ Bindings: Env }>();
 app.use("*", secureHeaders());
 app.use("*", cors({
   origin: (origin) => {
+    if (!origin) return null;
     const allowed = [
       "https://listify.pages.dev",
       "http://localhost:5173",
+      "https://listify.onurd.com.tr"
     ];
-    return allowed.includes(origin) ? origin : null;
+    if (allowed.includes(origin) || origin.endsWith(".onurd.com.tr") || origin === "https://onurd.com.tr") {
+      return origin;
+    }
+    return null;
   },
   credentials: true,
   allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
