@@ -36,8 +36,8 @@
     "feature1Desc": "Film, dizi, kitap, yemek ve alışveriş listesi; hepsi tek bir şık ve modern platformda.",
     "feature2Title": "Akıllı Hatırlatmalar",
     "feature2Desc": "E-posta ve uygulama içi bildirimlerle sizi asla sıkmadan görevlerinizi hatırlatırız.",
-    "feature3Title": "Çift Dil Desteği",
-    "feature3Desc": "Türkçe ve İngilizce — arayüzü dilediğiniz dilde akıcı bir şekilde kullanın."
+    "feature3Title": "Detaylı İstatistikler",
+    "feature3Desc": "İzleme, okuma ve harcama alışkanlıklarınızı size özel grafiklerle zaman içinde analiz edin."
   },
   "status": {
     "pending": "Bekliyor",
@@ -122,7 +122,8 @@
     "price": "Fiyat (TL)",
     "barcode": "Barkod Ara",
     "clearChecked": "Alındıları Temizle",
-    "newList": "Yeni Liste"
+    "newList": "Yeni Liste",
+    "categoryLabel": "Kategori"
   },
   "food": {
     "restaurant": "Restoran",

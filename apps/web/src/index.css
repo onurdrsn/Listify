@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@source "./src";
 @theme {
   /* Zemin */
   --color-slate-950: #0A0C10;
@@ -44,15 +43,6 @@
   --shadow-glow-book:   0 0 24px rgba(75,168,232,0.18);
   --shadow-glow-food:   0 0 24px rgba(232,87,75,0.18);
   --shadow-glow-shop:   0 0 24px rgba(75,232,168,0.18);
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body, #root {
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
 }
 
 html {

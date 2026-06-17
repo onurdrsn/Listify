@@ -36,8 +36,8 @@
     "feature1Desc": "Movies, series, books, food, and shopping lists — all in a sleek, modern platform.",
     "feature2Title": "Smart Reminders",
     "feature2Desc": "Email and in-app notifications that gently remind you of your tasks without being annoying.",
-    "feature3Title": "Dual Language Support",
-    "feature3Desc": "Turkish and English — use the interface fluently in the language you prefer."
+    "feature3Title": "Personalized Insights",
+    "feature3Desc": "Get detailed statistics on your watching, reading, and eating habits over time."
   },
   "status": {
     "pending": "Pending",
@@ -122,7 +122,8 @@
     "price": "Price",
     "barcode": "Barcode Search",
     "clearChecked": "Clear Checked",
-    "newList": "New List"
+    "newList": "New List",
+    "categoryLabel": "Category"
   },
   "food": {
     "restaurant": "Restaurant",

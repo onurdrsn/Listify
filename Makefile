@@ -1,4 +1,4 @@
-.PHONY: install dev dev-web dev-worker build build-web build-worker deploy deploy-web deploy-worker clean
+.PHONY: install dev dev-web dev-worker build build-web build-worker deploy deploy-web deploy-worker migrate clean
 
 # Varsayılan hedef
 all: install build
@@ -41,6 +41,10 @@ deploy-web: build-web
 # Sadece Worker projesinin Cloudflare Workers'a deploy edilmesi
 deploy-worker: build-worker
 	cd apps/worker && npx wrangler deploy
+
+# Veritabanı şemasını (tabloları) veritabanına uygular (Drizzle Push)
+migrate:
+	cd apps/worker && npm run migrate
 
 # Derleme dosyalarının temizlenmesi
 clean:

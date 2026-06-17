@@ -3,21 +3,23 @@
   "private": true,
   "scripts": {
     "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "migrate": "drizzle-kit push"
   },
   "dependencies": {
-    "hono": "^4.5.0",
     "@hono/trpc-server": "^0.3.0",
+    "@listify/shared": "*",
+    "@neondatabase/serverless": "^0.9.0",
     "@trpc/server": "^11.0.0",
     "drizzle-orm": "^0.33.0",
-    "@neondatabase/serverless": "^0.9.0",
-    "zod": "^3.23.0",
-    "@listify/shared": "*"
+    "hono": "^4.5.0",
+    "zod": "^3.23.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241022.0",
+    "dotenv": "^17.4.2",
     "drizzle-kit": "^0.24.0",
-    "wrangler": "^3.70.0",
     "typescript": "^5.5.0",
-    "@cloudflare/workers-types": "^4.20241022.0"
+    "wrangler": "^3.70.0"
   }
 }

@@ -56,9 +56,9 @@ export function Landing() {
       </nav>
 
       {/* Hero */}
-      <main className="flex-1 max-w-4xl mx-auto w-full px-8 py-20 flex flex-col items-center text-center relative z-10">
+      <main className="flex-1 max-w-5xl mx-auto w-full px-8 flex flex-col items-center justify-center text-center min-h-[85vh] relative z-10">
         {/* Liste tipi renk noktaları */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
           {LIST_PREVIEWS.map(lp => (
             <div
               key={lp.label}
@@ -70,29 +70,29 @@ export function Landing() {
           ))}
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-400 mb-6 leading-tight tracking-tight drop-shadow-sm" style={{ fontFamily: "var(--font-display)" }}>
+        <h1 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white to-slate-400 mb-6 leading-tight tracking-tight drop-shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100" style={{ fontFamily: "var(--font-display)" }}>
           {t("landing.hero")}
         </h1>
-        <p className="text-lg md:text-xl text-text-secondary mb-12 max-w-2xl leading-relaxed">
+        <p className="text-lg md:text-xl text-text-secondary mb-12 max-w-2xl leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
           {t("landing.heroSub")}
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center gap-4 mb-24">
-          <Button size="lg" onClick={() => openAuth("register")} style={{ background: "var(--color-film)", color: "#0A0C10" }} className="w-full sm:w-auto font-bold text-base hover:scale-105 hover:shadow-glow-film transition-all duration-300">{t("landing.cta")}</Button>
-          <Button variant="outline" size="lg" onClick={() => openAuth("login")} className="w-full sm:w-auto hover:scale-105 transition-all duration-300">{t("landing.ctaLogin")}</Button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-24 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 w-full sm:w-auto">
+          <Button size="lg" onClick={() => openAuth("register")} style={{ background: "var(--color-film)", color: "#0A0C10" }} className="w-full sm:w-48 font-bold text-base hover:scale-105 hover:shadow-glow-film transition-all duration-300">{t("landing.cta")}</Button>
+          <Button variant="outline" size="lg" onClick={() => openAuth("login")} className="w-full sm:w-48 hover:scale-105 transition-all duration-300">{t("landing.ctaLogin")}</Button>
         </div>
 
         {/* Özellikler */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full text-left">
-          {FEATURES.map(f => (
-            <div key={f.key} className={`bg-slate-900/50 backdrop-blur-sm border border-border rounded-card p-6 transition-all duration-300 hover:-translate-y-1.5 ${f.hoverClass}`}>
-              <div className="w-12 h-12 bg-slate-800/40 rounded-sm flex items-center justify-center border border-border mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full text-left animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
+          {FEATURES.map((f, i) => (
+            <div key={f.key} className={`bg-slate-900/50 backdrop-blur-sm border border-border rounded-card p-8 transition-all duration-500 hover:-translate-y-2 ${f.hoverClass}`}>
+              <div className="w-14 h-14 bg-slate-800/60 rounded-xl flex items-center justify-center border border-border mb-6 shadow-sm">
                 <span className="text-2xl">{f.icon}</span>
               </div>
-              <h3 className="text-lg font-bold text-text-primary mb-2" style={{ fontFamily: "var(--font-display)" }}>
+              <h3 className="text-xl font-bold text-text-primary mb-3" style={{ fontFamily: "var(--font-display)" }}>
                 {t(`landing.${f.key}Title`)}
               </h3>
-              <p className="text-sm text-text-secondary leading-relaxed">{t(`landing.${f.key}Desc`)}</p>
+              <p className="text-base text-text-secondary leading-relaxed">{t(`landing.${f.key}Desc`)}</p>
             </div>
           ))}
         </div>

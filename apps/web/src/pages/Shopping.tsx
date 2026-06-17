@@ -143,7 +143,7 @@ export function Shopping() {
               />
             </div>
             <Select
-              label={t("shopping.category")}
+              label={t("shopping.categoryLabel")}
               value={category}
               onChange={v => setCategory(v as typeof CATEGORIES[number])}
               options={CATEGORIES.map(c => ({ value: c, label: t(`shopping.category.${c}`) }))}
