@@ -160,7 +160,8 @@
   "errors": {
     "generic": "Something went wrong. Please try again.",
     "notFound": "Not found.",
-    "unauthorized": "You need to be logged in to do this."
+    "unauthorized": "You need to be logged in to do this.",
+    "network": "Could not connect to the server. Please check your internet connection."
   },
   "toast": {
     "added": "Added!",

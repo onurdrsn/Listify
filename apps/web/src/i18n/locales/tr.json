@@ -160,7 +160,8 @@
   "errors": {
     "generic": "Bir şeyler ters gitti. Tekrar deneyin.",
     "notFound": "Bulunamadı.",
-    "unauthorized": "Bu işlem için giriş yapmanız gerekiyor."
+    "unauthorized": "Bu işlem için giriş yapmanız gerekiyor.",
+    "network": "Sunucuyla bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin."
   },
   "toast": {
     "added": "Eklendi!",

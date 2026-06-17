@@ -29,13 +29,22 @@ export function AuthModal({ isOpen, onClose, defaultMode = "login" }: AuthModalP
 
   const locale = (i18n.language === "en" ? "en" : "tr") as "tr" | "en";
 
+  const handleError = (e: any) => {
+    const msg = e.message;
+    if (msg.includes("NetworkError") || msg.includes("Failed to fetch") || msg.includes("fetch")) {
+      setError(t("errors.network"));
+    } else {
+      setError(msg);
+    }
+  };
+
   const login = trpc.auth.login.useMutation({
     onSuccess: ({ token, user }) => { setAuth(token, user as any); navigate("/dashboard"); onClose(); },
-    onError: (e) => setError(e.message),
+    onError: handleError,
   });
   const register = trpc.auth.register.useMutation({
     onSuccess: ({ token, user }) => { setAuth(token, user as any); navigate("/dashboard"); onClose(); },
-    onError: (e) => setError(e.message),
+    onError: handleError,
   });
 
   const handleSubmit = () => {
