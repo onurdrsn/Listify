@@ -21,6 +21,7 @@ type Env = {
   TMDB_API_KEY: string;
   COOKIE_SECRET: string;
   APP_URL: string;
+  CRON_SECRET: string;
   RATE_LIMIT_KV: KVNamespace;
   SESSION_KV: KVNamespace;
   REMINDER_SCHEDULER: DurableObjectNamespace;
@@ -49,16 +50,24 @@ app.use("/trpc/*", trpcServer({
 
 app.get("/health", (c) => c.json({ status: "ok", ts: Date.now() }));
 
+app.get("/api/cron/purge", async (c) => {
+  if (!c.env.CRON_SECRET || c.req.query("secret") !== c.env.CRON_SECRET) {
+    return c.json({ error: "Unauthorized" }, 401);
+  }
+  const db = drizzle(neon(c.env.DATABASE_URL), { schema });
+  c.executionCtx.waitUntil(purgeDeletedUsers(db));
+  return c.json({ status: "Purge task started" });
+});
+
+app.get("/api/cron/digest", async (c) => {
+  if (!c.env.CRON_SECRET || c.req.query("secret") !== c.env.CRON_SECRET) {
+    return c.json({ error: "Unauthorized" }, 401);
+  }
+  const db = drizzle(neon(c.env.DATABASE_URL), { schema });
+  c.executionCtx.waitUntil(fireWeeklyDigests(db, c.env));
+  return c.json({ status: "Digest task started" });
+});
+
 export default {
   fetch: app.fetch,
-
-  async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
-    const db = drizzle(neon(env.DATABASE_URL), { schema });
-    if (event.cron === "0 3 * * *") {
-      ctx.waitUntil(purgeDeletedUsers(db));
-    }
-    if (event.cron === "0 6 * * 1") {
-      ctx.waitUntil(fireWeeklyDigests(db, env));
-    }
-  },
 };

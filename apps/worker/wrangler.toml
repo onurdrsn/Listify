@@ -23,8 +23,4 @@ class_name = "ReminderScheduler"
 tag = "v1"
 new_sqlite_classes = ["ReminderScheduler"]
 
-[triggers]
-crons = [
-  "0 3 * * *",   # KVKK hard-delete purge (03:00 UTC)
-  "0 6 * * 1"    # Haftalık özet trigger (Pazartesi 06:00 UTC = Türkiye 09:00)
-]
+
