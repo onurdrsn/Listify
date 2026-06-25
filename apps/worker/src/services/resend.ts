@@ -77,7 +77,7 @@ export async function sendReminderEmail(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "Listify <bildirim@listify.app>",
+      from: "Listify <bildirim@onurd.com.tr>",
       to: [to],
       subject,
       html,
