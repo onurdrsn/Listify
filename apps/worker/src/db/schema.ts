@@ -27,18 +27,22 @@ export const notifChannelEnum = pgEnum("notif_channel", ["in_app", "email", "bot
 
 /* ── Kullanıcılar ── */
 export const users = pgTable("users", {
-  id:               uuid("id").defaultRandom().primaryKey(),
-  email:            text("email").notNull().unique(),
-  passwordHash:     text("password_hash").notNull(),
-  name:             text("name").notNull(),
-  locale:           text("locale").notNull().default("tr"),          // "tr" | "en"
-  notifChannel:     notifChannelEnum("notif_channel").notNull().default("both"),
-  weeklyDigest:     boolean("weekly_digest").notNull().default(true),
-  smartIdleDays:    smallint("smart_idle_days").notNull().default(7), // 0 = kapalı
-  createdAt:        timestamp("created_at").defaultNow().notNull(),
-  updatedAt:        timestamp("updated_at").defaultNow().notNull(),
-  deletedAt:        timestamp("deleted_at"),
-  scheduledPurgeAt: timestamp("scheduled_purge_at"),
+  id:                   uuid("id").defaultRandom().primaryKey(),
+  email:                text("email").notNull().unique(),
+  passwordHash:         text("password_hash").notNull(),
+  name:                 text("name").notNull(),
+  locale:               text("locale").notNull().default("tr"),          // "tr" | "en"
+  notifChannel:         notifChannelEnum("notif_channel").notNull().default("both"),
+  weeklyDigest:         boolean("weekly_digest").notNull().default(true),
+  smartIdleDays:        smallint("smart_idle_days").notNull().default(7), // 0 = kapalı
+  isVerified:           boolean("is_verified").notNull().default(false),
+  activationCode:       text("activation_code"),
+  activationRetryCount: smallint("activation_retry_count").notNull().default(0),
+  lastActivationSentAt: timestamp("last_activation_sent_at"),
+  createdAt:            timestamp("created_at").defaultNow().notNull(),
+  updatedAt:            timestamp("updated_at").defaultNow().notNull(),
+  deletedAt:            timestamp("deleted_at"),
+  scheduledPurgeAt:     timestamp("scheduled_purge_at"),
 });
 
 /* ── Oturumlar ── */

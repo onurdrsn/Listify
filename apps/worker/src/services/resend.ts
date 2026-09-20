@@ -91,6 +91,60 @@ export async function sendReminderEmail(
   }
 }
 
+export async function sendActivationEmail(
+  apiKey: string,
+  to: string,
+  name: string,
+  code: string,
+  locale: Locale
+): Promise<void> {
+  const subject = locale === "tr" ? "Hesabınızı Doğrulayın - Listify" : "Verify Your Account - Listify";
+  const greeting = locale === "tr" ? `Merhaba ${name},` : `Hi ${name},`;
+  const intro = locale === "tr" 
+    ? "Listify'a hoş geldiniz! Hesabınızı aktifleştirmek için aşağıdaki 6 haneli doğrulama kodunu kullanın." 
+    : "Welcome to Listify! Use the 6-digit verification code below to activate your account.";
+  
+  const html = `
+<!DOCTYPE html>
+<html lang="${locale}">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { margin:0; padding:0; background:#0A0C10; font-family:'Inter',sans-serif; color:#ECEAF4; }
+    .container { max-width:520px; margin:40px auto; background:#0F1117; border:1px solid rgba(255,255,255,0.06); border-radius:12px; overflow:hidden; }
+    .header { background:#161820; padding:28px 32px; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .logo { font-size:22px; font-weight:800; color:#E8B04B; }
+    .body { padding:32px; }
+    .greeting { font-size:15px; color:#9896A8; margin-bottom:16px; }
+    .intro { font-size:15px; color:#ECEAF4; margin-bottom:24px; line-height:1.6; }
+    .code-box { background:#1E2130; border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:24px; text-align:center; font-size:32px; font-weight:700; letter-spacing:8px; color:#E8B04B; margin:24px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header"><span class="logo">Listify</span></div>
+    <div class="body">
+      <p class="greeting">${greeting}</p>
+      <p class="intro">${intro}</p>
+      <div class="code-box">${code}</div>
+    </div>
+  </div>
+</body>
+</html>`;
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from: "Listify <bildirim@listify.app>", to: [to], subject, html }),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    console.error("Resend error (activation):", err);
+    throw new Error(`Resend activation failed: ${res.status}`);
+  }
+}
+
 export async function sendWeeklyDigestEmail(
   apiKey: string,
   params: {

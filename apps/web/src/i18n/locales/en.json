@@ -25,7 +25,13 @@
     "invalidEmail": "Invalid email",
     "passwordMin": "At least 8 characters",
     "wrongCredentials": "Invalid email or password",
-    "emailTaken": "Email already in use"
+    "emailTaken": "Email already in use",
+    "activationTitle": "Verify Your Email",
+    "activationDesc": "We sent a 6-digit code to your email. Enter it below.",
+    "activationCode": "6-digit code",
+    "verify": "Verify",
+    "resendInfo": "Didn't receive it? Go back to login and try logging in again to get a new code.",
+    "waitInfo": "Please wait {{seconds}}s before requesting a new code."
   },
   "landing": {
     "hero": "All your lists,\nin one platform.",

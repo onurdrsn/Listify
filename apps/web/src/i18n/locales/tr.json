@@ -25,7 +25,13 @@
     "invalidEmail": "Geçersiz e-posta",
     "passwordMin": "En az 8 karakter",
     "wrongCredentials": "E-posta veya şifre hatalı",
-    "emailTaken": "Bu e-posta zaten kayıtlı"
+    "emailTaken": "Bu e-posta zaten kayıtlı",
+    "activationTitle": "E-postanızı Doğrulayın",
+    "activationDesc": "E-posta adresinize 6 haneli bir kod gönderdik. Lütfen aşağıya girin.",
+    "activationCode": "6 haneli kod",
+    "verify": "Doğrula",
+    "resendInfo": "Kod gelmedi mi? Giriş ekranına dönüp tekrar giriş yapmayı denerseniz yeni kod gönderilir.",
+    "waitInfo": "Yeni kod isteyebilmek için lütfen {{seconds}} saniye bekleyin."
   },
   "landing": {
     "hero": "Tüm listeleriniz,\ntek bir platformda.",
